@@ -1,0 +1,60 @@
+@Library('lokisharedlibs') _
+pipeline {
+    agent {
+        label "icicibanknode"
+    }
+    tools {
+        maven 'maven3.9.0'
+    }
+    parameters {
+  choice choices: ['development', 'master', 'qa', 'test'], description: 'change the branch name', name: 'BranchName'
+  string defaultValue: 'Loknathreddy', description: 'override the default value', name: 'PersonName'
+}
+ 
+    options {
+  timestamps()
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+}
+    
+    stages {
+        
+        stage('checkoutcode') {
+            steps{
+                sendSlackNotifications('started')
+                  git branch: "${params.BranchName}", credentialsId: '70544c5a-7988-4181-8c3e-fa1011f8efff', url: 'https://github.com/lokeshsgithub/maven-web-appslok.git'
+            }
+        }
+        stage('Build') {
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage('Executing the sonarqube report') {
+            steps{
+                sh "mvn clean sonar:sonar"
+            }
+        }
+        stage('Uploading the artifacts into nexus') {
+            steps{
+                sh "mvn clean deploy"
+            }
+        }
+        stage('Deploy into APP server') {
+            steps{
+                sshagent(['7bf7c84a-fb3f-4fb5-b20f-cf3fbfb4631f']) {
+                    sh "scp -o stricthostkeychecking=no target/maven-web-app.war ec2-user@172.31.43.82:/opt/apache-tomcat-9.0.71/webapps"
+            }
+        }
+      }
+        
+    }//stages closed
+    post {
+        success{
+            sendSlackNotifications(currentBuild.result)
+        }
+        failure{
+            sendSlackNotifications(currentBuild.result)
+        }
+    }
+        
+}//pipeline closed
