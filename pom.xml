@@ -21,9 +21,9 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://172.31.42.121:9182/lokeshreddy/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>admin123</sonar.password>
+		<sonar.host.url>http://10.0.14.189:9182/lokeshreddy</sonar.host.url>
+		<sonar.login>squ_0733bd54df2cdc15d6b76c78ddb2246d4d9c764a</sonar.login>
+		 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://172.31.13.39:1999/lokeshreddy/repository/icicibank-release</url>
+	      <urlhttp://ec2-13-233-245-250.ap-south-1.compute.amazonaws.com:1999/lokeshreddy/repository/icicibank_release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://172.31.13.39:1999/lokeshreddy/repository/icicibank-snapshot/</url>
+	      <url>http://ec2-13-233-245-250.ap-south-1.compute.amazonaws.com:1999/lokeshreddy/repository/icicibank_snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
