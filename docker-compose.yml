@@ -1,0 +1,18 @@
+version: '3.5'
+services:
+  mavenwebapplok:
+      image: lokeshsdockerhub/mavenwebapplok:version
+      ports: 
+       - 9182:8080
+      networks:
+       - mavenwebapplokbridge
+      volumes:
+       - mavenwebappvol:/usr/local/tomcat/
+networks:
+  mavenwebapplokbridge:
+     driver: local
+volumes:
+  mavenwebappvol:
+     external: true     
+
+    
