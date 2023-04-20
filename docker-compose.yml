@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   mavenwebapplok:
-      image: lokeshsdockerhub/mavenwebapplok:version
+      image: lokeshsdockerhub/mavenwebapplok:VERSION
       ports: 
        - 9182:8080
       networks:
