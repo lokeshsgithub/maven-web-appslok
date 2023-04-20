@@ -10,7 +10,7 @@ services:
        - mavenwebappvol:/usr/local/tomcat/
 networks:
   mavenwebapplokbridge:
-     driver: local
+     driver: bridge
 volumes:
   mavenwebappvol:
      external: true     
