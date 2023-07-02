@@ -2,15 +2,15 @@
     "jenkins-runner.jobs": {
         "mavenapp": {
             "isDefault": true,
-            "runWith": "jenkinsslave",
+            "runWith": "jenkins-master",
             "name": "mavenapp",
         }
-    }
+    },
     "jenkins-runner.hostConfigs": {
         "mavenapp": {
-            "url": "http://localhost:8090",
-            "user": "admin",
-            "password": "admin",
+            "url": "http://65.0.106.105:8080",
+            "user": "lokesh",
+            "password": "11257cca3ba487127fb2c0ad01445b9fe8",
         }
     }
 }
