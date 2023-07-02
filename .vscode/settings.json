@@ -4,13 +4,14 @@
             "isDefault": true,
             "runWith": "jenkins-master",
             "name": "mavenapp",
+           
         }
     },
     "jenkins-runner.hostConfigs": {
-        "mavenapp": {
+        "jenkins-master": {
             "url": "http://65.0.106.105:8080",
             "user": "lokesh",
-            "password": "11257cca3ba487127fb2c0ad01445b9fe8",
+            "password": "11f467864cc6e3a89521d65f59a6a6857d",
         }
     }
 }
