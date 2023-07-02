@@ -40,13 +40,13 @@ pipeline {
                 sh "mvn clean package sonar:sonar"
             }
           }
-        
-        stage('quality gate analysis') {
+        }
 
+        stage('quality gate analysis') {
             steps{
                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar_auth'
             }
         }
-     }
 
-}  
+   }
+}
