@@ -33,6 +33,20 @@ pipeline {
                 sh "mvn clean validate"
             }
         }
+
+        stage('sonarqube analysis') {
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonar_auth') {
+                sh "mvn clean package sonar:sonar"
+            }
+          }
+        
+        stage('quality gate analysis') {
+
+            steps{
+                waitForQualityGate abortPipeline: false, credentialsId: 'sonar_auth'
+            }
         }
+     }
 
 }  
