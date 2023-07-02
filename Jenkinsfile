@@ -48,5 +48,25 @@ pipeline {
             }
         }
 
+        stage('nexus uploader') {
+            steps{
+                nexusArtifactUploader artifacts: 
+                [
+                    [
+                        artifactId: 'json',
+                        classifier: '', file: 'target/*.war',
+                        type: 'json'
+                    ]
+                ],
+                credentialsId: 'Nexus_crd',
+                groupId: 'com.mt',
+                nexusUrl: '3.110.92.215:8081',
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'mavenapp-release',
+                version: '1.0.0'
+            }
+        }
+
    }
 }
